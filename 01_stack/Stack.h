@@ -5,7 +5,6 @@ class Stack
 {
 private:
 	int top;
-	int size;
 	int max_size;
 
 	T stack[100];
@@ -15,7 +14,6 @@ public:
 	{
 		max_size = maxSize;
 		top = 0;
-		size = 0;
 	};
 
 	Stack(const Stack& other)
@@ -23,7 +21,6 @@ public:
 		stack = other.stack;
 		max_size = other.max_size;
 		top = other.top;
-		size = other.size;
 	};
 
 	void push(T data)
@@ -33,7 +30,6 @@ public:
 		{
 			stack[top] = data;
 			top += 1;
-			//size = sizeof(data) / sizeof(stack);
 		}
 	};
 
@@ -50,27 +46,29 @@ public:
 
 	bool isEmpty()
 	{
-
+		if (top == 0) return false;
+		return true;
 	};
 
 	bool isFull()
 	{
-
+		if (top == max_size) return true;
+		return false;
 	};
 
 	int getSize()
 	{
-		return size;
+		return top;
 	};
 
 	int getMaxSize()
 	{
-
+		return max_size;
 	};
 
 	int getTop()
 	{
-
+		return top;
 	};
 
 

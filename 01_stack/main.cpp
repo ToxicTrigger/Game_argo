@@ -12,8 +12,10 @@ void main()
 	
 	cout << tmp.pop() << endl;
 	cout << tmp.pop() << endl;
+	cout << "size = " << tmp.getSize() << endl;
+
 	cout << tmp.pop() << endl;
-	cout << tmp.pop() << endl;
+	cout << tmp.getSize() << endl;
 	getchar();
 
 }
