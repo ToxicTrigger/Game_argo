@@ -85,7 +85,7 @@ public:
 
 	int get_size()
 	{
-		return top;
+		return cur;
 	};
 
 	int getMaxSize()

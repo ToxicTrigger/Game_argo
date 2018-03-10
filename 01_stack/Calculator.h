@@ -19,6 +19,6 @@ public:
 	{
 	}
 
-	int calc();
+	float calc();
 };
 

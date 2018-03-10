@@ -1,31 +1,27 @@
 #include "Calculator.h"
 
-int Calculator::calc()
+float Calculator::calc()
 {
-	int a, b;
+	float a, b;
 	a = stack.pop();
 	b = stack.pop();
 
 	switch (op.pop())
 	{
 	case '+':
-		stack.push(a + b);
+		stack.push(b + a);
 		return stack.getTop();
 		break;
 	case '-':
-		stack.push(a - b);
+		stack.push(b - a);
 		return stack.getTop();
 		break;
 	case '*':
-		stack.push(a * b);
+		stack.push(b * a);
 		return stack.getTop();
 		break;
 	case '/':
-		stack.push(a / b);
-		return stack.getTop();
-		break;
-	case '%':
-		stack.push(a % b);
+		stack.push(b / a);
 		return stack.getTop();
 		break;
 	}
