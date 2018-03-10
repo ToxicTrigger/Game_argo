@@ -1,62 +1,89 @@
 #pragma once
+#include <iostream>
+using namespace std;
 
 template <typename T>
 class Stack
 {
-private:
-	int top;
-	int max_size;
-
-	T stack[100];
-
-public:
-	Stack(int maxSize)
+	struct Data
 	{
-		max_size = maxSize;
-		top = 0;
+		T data;
+		Data* next;
+		Data(T data, Data* next) : data(data), next(next) {}
 	};
 
-	Stack(const Stack& other)
+private:
+	Data* stack;
+	int max_size;
+	Data top;
+	int cur;
+
+public:
+	Stack() : top(0, NULL)
 	{
-		stack = other.stack;
-		max_size = other.max_size;
-		top = other.top;
+		stack = &top;
+		cur = 0;
+	}
+
+	Stack(int maxSize) : max_size(maxSize), top(0, NULL)
+	{
+		stack = &top;
+		cur = 0;
+	};
+
+	Stack(const Stack& other) : max_size(other.max_size), top(other.top), stack(other.stack), cur(other.cur)
+	{
 	};
 
 	void push(T data)
 	{
 		// when stack not overflow.
-		if (top < max_size)
+		if (cur < max_size)
 		{
-			stack[top] = data;
-			top += 1;
+			Data* tmp = new Data(data, stack);
+			stack = tmp;
+			cur += 1;
 		}
 	};
 
+	void clean()
+	{
+		Data top = Data(0,NULL);
+		stack = &top;
+	}
+
+	T getTop()
+	{
+		T data = stack->data;
+		return data;
+	}
+
 	T pop()
 	{
-		if (top > 0)
+		if (cur > 0)
 		{
-			T tmp = stack[--top];
-			stack[top] = NULL;
-			return tmp;
+			T data = stack->data;
+			Data* tmp = stack;
+			stack = stack->next;
+			delete tmp; 
+			cur--;
+			return data;
 		}
 		return NULL;
 	};
 
-	bool isEmpty()
+	bool is_empty()
 	{
-		if (top == 0) return false;
-		return true;
+		return stack == &top;
 	};
 
-	bool isFull()
+	bool is_full()
 	{
-		if (top == max_size) return true;
+		if (cur == max_size) return true;
 		return false;
 	};
 
-	int getSize()
+	int get_size()
 	{
 		return top;
 	};
@@ -66,10 +93,6 @@ public:
 		return max_size;
 	};
 
-	int getTop()
-	{
-		return top;
-	};
 
 
 

@@ -1,21 +1,30 @@
 #include <iostream>
 #include "Stack.h"
+#include "Calculator.h"
 
 using namespace std;
 
 void main()
 {
-	Stack<int> tmp = Stack<int>(10);
-	tmp.push(1);
-	tmp.push(2);
-	tmp.push(3);
-	
-	cout << tmp.pop() << endl;
-	cout << tmp.pop() << endl;
-	cout << "size = " << tmp.getSize() << endl;
+	Calculator calc;
+	float in;
+	bool end = false;
+	while (!end)
+	{
+		cout << "값을 입력하세요. [끝내려면 0을 입력해주세요.]" << endl;
+		cin >> in;
+		if (in == 0) { end = true; return; }
+		calc.stack.push(in);
 
-	cout << tmp.pop() << endl;
-	cout << tmp.getSize() << endl;
-	getchar();
+		cout << "값을 입력하세요." << endl;
+		cin >> in;
+		calc.stack.push(in);
 
+		cout << "연산자를 입력하세요." << endl;
+		char op;
+		cin >> op;
+		calc.op.push(op);
+
+		cout << "result = " << calc.calc() << endl;
+	}
 }
