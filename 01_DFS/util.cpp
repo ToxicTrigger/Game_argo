@@ -51,12 +51,14 @@ void ScreenRelease()
 void ScreenPrint( int x, int y, char *string )
 {
      DWORD dw;
-     COORD CursorPosition = { x, y };
+     COORD CursorPosition = { x * 2, y };
      SetConsoleCursorPosition( g_hScreen[g_nScreenIndex], CursorPosition );    
-     WriteFile( g_hScreen[g_nScreenIndex], string, strlen( string ), &dw, NULL );
+     WriteFile( g_hScreen[g_nScreenIndex], string, strlen(string), &dw, NULL );
 }
+
+
 // 1 ~ 15 까지 색상 설정 가능
 void SetColor( unsigned short color )
 {               
-     SetConsoleTextAttribute( g_hScreen[g_nScreenIndex], color );
+    SetConsoleTextAttribute( g_hScreen[g_nScreenIndex], color );
 }

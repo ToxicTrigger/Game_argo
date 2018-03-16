@@ -4,7 +4,20 @@
 class Tile : public Object
 {
 public:
-	Tile();
+	bool isOver;
+	bool isWall;
+	Tile() : Object(0, 0, (char*)"бр")
+	{
+		isOver = false;
+		isWall = false;
+	}
+	Tile(int X, int Y) : Object(X, Y, (char*)"бр")
+	{
+		isOver = false;
+		isWall = false;
+	};
 	~Tile();
+
+	void update();
 };
 
