@@ -1,7 +1,6 @@
 #pragma once
 #include "util.h"
 
-
 enum Look { UP_, DOWN_, LEFT_, RIGHT_ };
 class Object
 {
@@ -17,8 +16,6 @@ public:
 		this->y = y;
 		this->Char = Char;
 	}
-
-
 	~Object();
 
 	void draw();
@@ -28,6 +25,5 @@ public:
 	int get_y() { return y; };
 
 	void move(Look look);
-
 };
 

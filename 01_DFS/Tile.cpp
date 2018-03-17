@@ -1,20 +1,27 @@
 #include "Tile.h"
 
-
-
-
-Tile::~Tile()
+void Tile::update(Object* player)
 {
-}
+	int x, y = 0;
+	x = player->get_x();
+	y = player->get_y();
 
-void Tile::update()
-{
-	if (isOver)
+	//°ãÄ¡¸é!
+	if (x == this->get_x() & y == this->get_y())
 	{
-		set_char((char*)"¢Ã");
+		isOver = true;
 	}
-	else 
+
+	if (isWall)
+	{
+		set_char((char*)"¡á");
+	}
+	else if(!isOver)
 	{
 		set_char((char*)"¡à");
+	}
+	else if (isOver)
+	{
+		set_char((char*)"¢Ã");
 	}
 }

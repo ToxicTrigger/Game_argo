@@ -29,7 +29,9 @@ void Object::set_char(char * Char)
 
 void Object::move(Look look)
 {
+	//화면 밖으로 이동하려 할 때 차단
 	if (x < 0 & look == Look::LEFT_) return;
+	if (y < 0 & look == Look::DOWN_) return;
 
 	switch (look)
 	{
