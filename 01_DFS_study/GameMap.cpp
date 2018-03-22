@@ -47,7 +47,7 @@ void CGameMap::makeMap()
 {
 	int y, x;
 	srand((unsigned)time(NULL));
-
+	//srand(0);
 	for (y = 0; y < m_mapsize; y++)
 	{
 		for (x = 0; x < m_mapsize; x++)

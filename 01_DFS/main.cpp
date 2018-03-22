@@ -188,6 +188,7 @@ int main()
 		if (end == 1)
 		{
 			Sleep(3000);
+		
 			break;
 		}
 	}
