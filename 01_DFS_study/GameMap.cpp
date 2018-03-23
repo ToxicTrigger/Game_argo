@@ -1,8 +1,5 @@
 #include "GameMap.h"
 
-
-
-
 CGameMap::CGameMap(int MapSize)
 {
 
