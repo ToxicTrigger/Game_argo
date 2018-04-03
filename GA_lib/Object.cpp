@@ -1,19 +1,9 @@
 #include "Object.h"
 
 
-
-Object::Object()
-{
-}
-
-
-Object::~Object()
-{
-}
-
 void Object::draw()
 {
-	ScreenPrint(this->x, this->y, this->Char);
+	util.ScreenPrint(this->x, this->y, this->Char);
 }
 
 void Object::set_pos(int x, int y)

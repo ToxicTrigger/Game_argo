@@ -7,16 +7,16 @@ class Object
 private:
 	int x, y;
 	char* Char;
-
+	util util;
 public:
-	Object();
+	Object() { ; }
 	Object(int x, int y, char* Char)
 	{
 		this->x = x;
 		this->y = y;
 		this->Char = Char;
 	}
-	~Object();
+	~Object() { ; }
 
 	void draw();
 	void set_pos(int x, int y);

@@ -1,16 +1,15 @@
 #include "util.h"
-#include <Windows.h>
 
 static int g_nScreenIndex;
 static HANDLE g_hScreen[2];
 
-void gotoxy(int x, int y)
+void util::gotoxy(int x, int y)
 {
 	COORD CursorPosition = {x, y};
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), CursorPosition);
 }
 
-void ScreenInit()
+void util::ScreenInit()
 {
      CONSOLE_CURSOR_INFO cci;
         
@@ -27,26 +26,26 @@ void ScreenInit()
      SetConsoleCursorInfo( g_hScreen[1], &cci );
 }
  
-void ScreenFlipping()
+void util::ScreenFlipping()
 {               
      SetConsoleActiveScreenBuffer( g_hScreen[g_nScreenIndex] );    
      g_nScreenIndex = !g_nScreenIndex; 
 }
  
-void ScreenClear()
+void util::ScreenClear()
 {               
      COORD Coor = { 0, 0 };
      DWORD dw;
      FillConsoleOutputCharacter( g_hScreen[g_nScreenIndex], ' ', 80*25, Coor, &dw );
 }
  
-void ScreenRelease()
+void util::ScreenRelease()
 {
      CloseHandle( g_hScreen[0] );
      CloseHandle( g_hScreen[1] );
 }
  
-void ScreenPrint( int x, int y, char *string )
+void util::ScreenPrint( int x, int y, char *string )
 {
      DWORD dw;
      COORD CursorPosition = { x * 2, y };
@@ -56,7 +55,7 @@ void ScreenPrint( int x, int y, char *string )
 
 
 // 1 ~ 15 까지 색상 설정 가능
-void SetColor( unsigned short color )
+void util::SetColor( unsigned short color )
 {               
     SetConsoleTextAttribute( g_hScreen[g_nScreenIndex], color );
 }

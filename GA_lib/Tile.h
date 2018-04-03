@@ -18,7 +18,7 @@ public:
 		isOver = false;
 		isWall = false;
 	};
-	~Tile()
+	inline ~Tile()
 	{
 
 	}
