@@ -27,7 +27,14 @@ public:
 	}
 	~Map()
 	{
-
+		if (tiles)
+		{
+			for (int i = 0; i < h; i++)
+			{
+				delete tiles[i];
+			}
+			delete tiles;
+		}
 	}
 
 	void draw_map()
@@ -39,6 +46,22 @@ public:
 				tiles[y][x].draw();
 			}
 		}
+	}
+
+	void update(Object* target)
+	{
+		for (int y = 0; y < h; y++)
+		{
+			for (int x = 0; x < w; x++)
+			{
+				tiles[y][x].update(target);
+			}
+		}
+	}
+
+	Tile get_tile_data(int x, int y)
+	{
+		return tiles[y][x];
 	}
 };
 

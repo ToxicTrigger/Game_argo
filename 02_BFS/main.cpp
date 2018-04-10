@@ -24,6 +24,7 @@ void main()
 	map.tiles[1][3].isWall = true;
 	map.tiles[2][3].isWall = true;
 
+
 	map.tiles[3][0].isWall = true;
 	map.tiles[3][1].isWall = true;
 	map.tiles[3][2].isWall = true;
@@ -34,7 +35,6 @@ void main()
 	visit.enqueue(map.tiles[0][0]);
 
 	bfs(map, player, point, visit, isEnd, &End);
-	Sleep(3000);
 	isEnd = true;
 
 	ScreenInit();
