@@ -7,6 +7,7 @@ public:
 	InsertionSort() {};
 	~InsertionSort() {};
 
+	//insert
 	void sort(int * Datas, int Size)
 	{
 		for (int i = 1; i < Size; i++)

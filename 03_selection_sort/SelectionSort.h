@@ -7,6 +7,7 @@ public:
 	SelectionSort() {};
 	~SelectionSort() {};
 	
+	//select
 	void sort(int* Datas, int Size)
 	{
 		for (int last = Size - 1; last >= 1; --last)

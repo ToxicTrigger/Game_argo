@@ -7,6 +7,7 @@ public:
 	BubbleSort() {};
 	~BubbleSort() {};
 
+	//bubble
 	void sort(int* Datas, int Size)
 	{
 		for (int i = Size - 1; i > 0; --i)
