@@ -2,10 +2,11 @@
 #include <stdlib.h>
 #include <malloc.h>
 
+template <typename T>
 class ArrayQ
 {
 private:
-	int* q;
+	T* q;
 	int front;
 	int end;
 	int max_size;
@@ -15,7 +16,7 @@ public:
 	ArrayQ(int MaxSize)
 	{
 		int tmp_size = MaxSize + 1;
-		int * tmp = (int*)malloc(tmp_size * sizeof(int));
+		T * tmp = (T*)malloc(tmp_size * sizeof(T));
 		q = tmp;
 		end = front = 0;
 		max_size = tmp_size;
@@ -27,7 +28,7 @@ public:
 		delete[] q;
 	}
 	
-	void enqueue(int data)
+	void enqueue(T data)
 	{
 		if ((end + 1) % max_size == front)
 		{
@@ -41,19 +42,19 @@ public:
 		}
 	}
 
-	int dequeue()
+	T dequeue()
 	{
 		if (is_empty())
 		{
 			printf("Error : failed Dequeue, End of Queue\n");
-			return -1;
+			return T();
 		}
 		size--;
 		front = (front + 1) % max_size;
 		return q[front];
 	}
 
-	int get_front()
+	T get_front()
 	{
 		return q[(front + 1) % max_size];
 	}
@@ -66,7 +67,7 @@ public:
 	int get_max_Size()
 	{
 		//메모리 상의 q 가 차지하는 크기
-		return (_msize(q) / sizeof(int)) - 1;
+		return (_msize(q) / sizeof(T)) - 1;
 	}
 
 	bool is_empty()
@@ -77,6 +78,6 @@ public:
 	void grow_size(int Up)
 	{
 		max_size = max_size + Up;
-		q = (int*)realloc(q, max_size * sizeof(int));
+		q = (T*)realloc(q, max_size * sizeof(T));
 	}
 };
