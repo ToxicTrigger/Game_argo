@@ -11,6 +11,7 @@ private:
 		low = f;
 		h = l - 1;
 		int t = 0;
+
 		while (low < h)
 		{
 			while (p > data[low]) low++;
@@ -20,6 +21,7 @@ private:
 		swap(data[low], data[l], t);
 		return low;
 	}
+
 
 	void QS(int* data, int f, int l)
 	{

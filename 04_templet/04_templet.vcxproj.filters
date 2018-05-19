@@ -23,7 +23,7 @@
     <ClInclude Include="myStack.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="..\02_Queue\ArrayQ.h">
+    <ClInclude Include="CkQ.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

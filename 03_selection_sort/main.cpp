@@ -6,13 +6,13 @@
 #include "ShellSort.h"
 #include "MergeSort.h"
 #include "QuickSort.h"
+#include <chrono>
 
 using namespace std;
 
 void main()
 {
 	//Init sort Class & time
-	clock_t t;
 	SelectionSort ss;
 	BubbleSort bs;
 	InsertionSort is;
@@ -23,56 +23,26 @@ void main()
 	int size = 50000;
 	int* data = new int[size];
 
-	//setting random value at dataArray
 	srand((unsigned)clock());
 	for (int i = 0; i < size; i++)
 	{
 		data[i] = (rand() % 1000) + 1;
 	}
-	//start timer
-	t = clock();
-	ss.sort(data, size);
-	//end timer
-	printf("Select = %0.4fs\n", (float)(clock() - t) / CLOCKS_PER_SEC);
-
-
-	srand((unsigned)clock());
-	for (int i = 0; i < size; i++)
-	{
-		data[i] = (rand() % 1000) + 1;
-	}
-	t = clock();
-	bs.sort(data, size);
-	printf("Bubble = %0.4fs\n", (float)(clock() - t) / CLOCKS_PER_SEC);
-
-
-	srand((unsigned)clock());
-	for (int i = 0; i < size; i++)
-	{
-		data[i] = (rand() % 1000) + 1;
-	}
-	t = clock();
-	is.sort(data, size);
-	printf("Insert = %0.4fs\n", (float)(clock() - t) / CLOCKS_PER_SEC);
-
-	srand((unsigned)clock());
-	for (int i = 0; i < size; i++)
-	{
-		data[i] = (rand() % 1000) + 1;
-	}
-	t = clock();
+	auto s = std::chrono::high_resolution_clock::now();
 	shell.sort(data, size);
-	printf("Shell = %0.4fs\n", (float)(clock() - t) / CLOCKS_PER_SEC);
+	auto f = std::chrono::high_resolution_clock::now();
+	cout << "Shell : " << std::chrono::duration_cast<std::chrono::nanoseconds>(f - s).count() << "ns\n";
 
 
 	srand((unsigned)clock());
 	for (int i = 0; i < size; i++)
 	{
-		data[i] = (rand() % 1000) + 1;
+		data[i] = (rand() % 10) + 1;
 	}
-	t = clock();
+	 s = std::chrono::high_resolution_clock::now();
 	ms.sort(data, size);
-	printf("merge = %0.4fs\n", (float)(clock() - t) / CLOCKS_PER_SEC);
+	 f = std::chrono::high_resolution_clock::now();
+	cout << "Merge : " << std::chrono::duration_cast<std::chrono::nanoseconds>(f - s).count() << "ns\n";
 
 
 	srand((unsigned)clock());
@@ -80,13 +50,11 @@ void main()
 	{
 		data[i] = (rand() % 1000) + 1;
 	}
-	t = clock();
+	 s = std::chrono::high_resolution_clock::now();
 	qs.sort(data, size);
-	printf("Quick = %0.4fs\n", (float)(clock() - t) / CLOCKS_PER_SEC);
-	for (int i = 0; i < 10; i++)
-	{
-		cout << data[i] << endl;
-	}
+	 f = std::chrono::high_resolution_clock::now();
+	cout << "Quick : " << std::chrono::duration_cast<std::chrono::nanoseconds>(f - s).count() << "ns\n";
+
 
 	getchar();
 }

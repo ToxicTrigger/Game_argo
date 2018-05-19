@@ -114,7 +114,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\02_Queue\ArrayQ.h" />
+    <ClInclude Include="CkQ.h" />
     <ClInclude Include="myStack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
